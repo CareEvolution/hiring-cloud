@@ -1,0 +1,785 @@
+data.aws_iam_policy_document.allow_exec_command: Reading...
+module.ecs.module.cluster.data.aws_partition.current: Reading...
+data.aws_iam_policy_document.allow_exec_command: Read complete after 0s [id=3621793318]
+module.ecs.module.cluster.data.aws_partition.current: Read complete after 0s [id=aws]
+module.ecs.module.service["primary_service"].data.aws_caller_identity.current: Reading...
+module.ecs.module.service["primary_service"].data.aws_partition.current: Reading...
+module.ecs.module.service["primary_service"].data.aws_region.current: Reading...
+module.ecs.module.service["primary_service"].data.aws_partition.current: Read complete after 0s [id=aws]
+module.ecs.module.service["primary_service"].data.aws_region.current: Read complete after 0s [id=us-east-1]
+module.ecs.module.service["primary_service"].data.aws_subnet.this[0]: Reading...
+module.ecs.module.service["primary_service"].module.container_definition["primary_container"].data.aws_region.current: Reading...
+module.ecs.module.service["primary_service"].module.container_definition["primary_container"].data.aws_region.current: Read complete after 0s [id=us-east-1]
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.task_exec_assume[0]: Reading...
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.task_exec[0]: Reading...
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.task_exec_assume[0]: Read complete after 0s [id=2291109037]
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.task_exec[0]: Read complete after 0s [id=1415633931]
+module.ecs.module.service["primary_service"].data.aws_caller_identity.current: Read complete after 0s [id=834293215331]
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.tasks_assume[0]: Reading...
+module.ecs.module.service["primary_service"].data.aws_iam_policy_document.tasks_assume[0]: Read complete after 0s [id=3132515787]
+module.ecs.module.service["primary_service"].data.aws_subnet.this[0]: Read complete after 1s [id=subnet-abc123]
+data.aws_route53_zone.certificate: Reading...
+data.aws_route53_zone.certificate: Read complete after 0s [id=Z03192028LXE6Q2FKX1H]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # aws_acm_certificate.certificate will be created
+  + resource "aws_acm_certificate" "certificate" {
+      + arn                       = (known after apply)
+      + domain_name               = "awesome-app.super-cool-domain.com"
+      + domain_validation_options = [
+          + {
+              + domain_name           = "awesome-app.super-cool-domain.com"
+              + resource_record_name  = (known after apply)
+              + resource_record_type  = (known after apply)
+              + resource_record_value = (known after apply)
+            },
+        ]
+      + id                        = (known after apply)
+      + key_algorithm             = (known after apply)
+      + not_after                 = (known after apply)
+      + not_before                = (known after apply)
+      + pending_renewal           = (known after apply)
+      + renewal_eligibility       = (known after apply)
+      + renewal_summary           = (known after apply)
+      + status                    = (known after apply)
+      + subject_alternative_names = [
+          + "awesome-app.super-cool-domain.com",
+        ]
+      + tags_all                  = (known after apply)
+      + type                      = (known after apply)
+      + validation_emails         = (known after apply)
+      + validation_method         = "DNS"
+    }
+
+  # aws_acm_certificate_validation.certificate will be created
+  + resource "aws_acm_certificate_validation" "certificate" {
+      + certificate_arn         = (known after apply)
+      + id                      = (known after apply)
+      + validation_record_fqdns = (known after apply)
+    }
+
+  # aws_efs_file_system.data will be created
+  + resource "aws_efs_file_system" "data" {
+      + arn                     = (known after apply)
+      + availability_zone_id    = (known after apply)
+      + availability_zone_name  = (known after apply)
+      + creation_token          = "data"
+      + dns_name                = (known after apply)
+      + encrypted               = false
+      + id                      = (known after apply)
+      + kms_key_id              = (known after apply)
+      + number_of_mount_targets = (known after apply)
+      + owner_id                = (known after apply)
+      + performance_mode        = (known after apply)
+      + size_in_bytes           = (known after apply)
+      + tags_all                = (known after apply)
+      + throughput_mode         = "elastic"
+    }
+
+  # aws_efs_mount_target.mount_target["subnet-abc123"] will be created
+  + resource "aws_efs_mount_target" "mount_target" {
+      + availability_zone_id   = (known after apply)
+      + availability_zone_name = (known after apply)
+      + dns_name               = (known after apply)
+      + file_system_arn        = (known after apply)
+      + file_system_id         = (known after apply)
+      + id                     = (known after apply)
+      + ip_address             = (known after apply)
+      + mount_target_dns_name  = (known after apply)
+      + network_interface_id   = (known after apply)
+      + owner_id               = (known after apply)
+      + security_groups        = (known after apply)
+      + subnet_id              = "subnet-abc123"
+    }
+
+  # aws_efs_mount_target.mount_target["subnet-ou812"] will be created
+  + resource "aws_efs_mount_target" "mount_target" {
+      + availability_zone_id   = (known after apply)
+      + availability_zone_name = (known after apply)
+      + dns_name               = (known after apply)
+      + file_system_arn        = (known after apply)
+      + file_system_id         = (known after apply)
+      + id                     = (known after apply)
+      + ip_address             = (known after apply)
+      + mount_target_dns_name  = (known after apply)
+      + network_interface_id   = (known after apply)
+      + owner_id               = (known after apply)
+      + security_groups        = (known after apply)
+      + subnet_id              = "subnet-ou812"
+    }
+
+  # aws_iam_policy.allow_exec_command will be created
+  + resource "aws_iam_policy" "allow_exec_command" {
+      + arn         = (known after apply)
+      + id          = (known after apply)
+      + name        = "allow_exec_command"
+      + name_prefix = (known after apply)
+      + path        = "/exercises/securing-app-exercise/web/"
+      + policy      = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "ssmmessages:OpenDataChannel",
+                          + "ssmmessages:OpenControlChannel",
+                          + "ssmmessages:CreateDataChannel",
+                          + "ssmmessages:CreateControlChannel",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id   = (known after apply)
+      + tags_all    = (known after apply)
+    }
+
+  # aws_lb.loadbalancer will be created
+  + resource "aws_lb" "loadbalancer" {
+      + arn                                         = (known after apply)
+      + arn_suffix                                  = (known after apply)
+      + desync_mitigation_mode                      = "defensive"
+      + dns_name                                    = (known after apply)
+      + drop_invalid_header_fields                  = false
+      + enable_deletion_protection                  = false
+      + enable_http2                                = true
+      + enable_tls_version_and_cipher_suite_headers = false
+      + enable_waf_fail_open                        = false
+      + enable_xff_client_port                      = false
+      + id                                          = (known after apply)
+      + idle_timeout                                = 60
+      + internal                                    = false
+      + ip_address_type                             = (known after apply)
+      + load_balancer_type                          = "application"
+      + name                                        = "sec-test-lb"
+      + preserve_host_header                        = false
+      + security_groups                             = (known after apply)
+      + subnets                                     = [
+          + "subnet-abc123",
+          + "subnet-ou812",
+        ]
+      + tags_all                                    = (known after apply)
+      + vpc_id                                      = (known after apply)
+      + xff_header_processing_mode                  = "append"
+      + zone_id                                     = (known after apply)
+    }
+
+  # aws_lb_listener.http will be created
+  + resource "aws_lb_listener" "http" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + load_balancer_arn = (known after apply)
+      + port              = 80
+      + protocol          = "HTTP"
+      + ssl_policy        = (known after apply)
+      + tags_all          = (known after apply)
+
+      + default_action {
+          + order = (known after apply)
+          + type  = "redirect"
+
+          + redirect {
+              + host        = "#{host}"
+              + path        = "/#{path}"
+              + port        = "443"
+              + protocol    = "HTTPS"
+              + query       = "#{query}"
+              + status_code = "HTTP_301"
+            }
+        }
+    }
+
+  # aws_lb_listener.https will be created
+  + resource "aws_lb_listener" "https" {
+      + arn               = (known after apply)
+      + certificate_arn   = (known after apply)
+      + id                = (known after apply)
+      + load_balancer_arn = (known after apply)
+      + port              = 443
+      + protocol          = "HTTPS"
+      + ssl_policy        = "ELBSecurityPolicy-TLS-1-0-2015-04"
+      + tags_all          = (known after apply)
+
+      + default_action {
+          + order            = (known after apply)
+          + target_group_arn = (known after apply)
+          + type             = "forward"
+        }
+    }
+
+  # aws_lb_target_group.targetgroup will be created
+  + resource "aws_lb_target_group" "targetgroup" {
+      + arn                                = (known after apply)
+      + arn_suffix                         = (known after apply)
+      + connection_termination             = false
+      + deregistration_delay               = "300"
+      + id                                 = (known after apply)
+      + ip_address_type                    = (known after apply)
+      + lambda_multi_value_headers_enabled = false
+      + load_balancing_algorithm_type      = (known after apply)
+      + load_balancing_cross_zone_enabled  = (known after apply)
+      + name                               = "awesome-app"
+      + port                               = 80
+      + preserve_client_ip                 = (known after apply)
+      + protocol                           = "HTTP"
+      + protocol_version                   = (known after apply)
+      + proxy_protocol_v2                  = false
+      + slow_start                         = 0
+      + tags_all                           = (known after apply)
+      + target_type                        = "ip"
+      + vpc_id                             = "vpc-98765"
+
+      + health_check {
+          + enabled             = true
+          + healthy_threshold   = 2
+          + interval            = 30
+          + matcher             = (known after apply)
+          + path                = "/api/healthz"
+          + port                = "traffic-port"
+          + protocol            = "HTTP"
+          + timeout             = 3
+          + unhealthy_threshold = 2
+        }
+    }
+
+  # aws_route53_record.certificate["awesome-app.super-cool-domain.com"] will be created
+  + resource "aws_route53_record" "certificate" {
+      + allow_overwrite = true
+      + fqdn            = (known after apply)
+      + id              = (known after apply)
+      + name            = (known after apply)
+      + records         = (known after apply)
+      + ttl             = 60
+      + type            = (known after apply)
+      + zone_id         = "Z03192028LXE6Q2FKX1H"
+    }
+
+  # aws_route53_record.loadbalancer_A will be created
+  + resource "aws_route53_record" "loadbalancer_A" {
+      + allow_overwrite = (known after apply)
+      + fqdn            = (known after apply)
+      + id              = (known after apply)
+      + name            = "awesome-app"
+      + type            = "A"
+      + zone_id         = "Z03192028LXE6Q2FKX1H"
+
+      + alias {
+          + evaluate_target_health = true
+          + name                   = (known after apply)
+          + zone_id                = (known after apply)
+        }
+    }
+
+  # aws_security_group.open_access will be created
+  + resource "aws_security_group" "open_access" {
+      + arn                    = (known after apply)
+      + description            = "Allow all inbound traffic"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = ""
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + name                   = "sec-test-open-access"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags_all               = (known after apply)
+      + vpc_id                 = "vpc-98765"
+    }
+
+  # module.ecs.module.cluster.aws_cloudwatch_log_group.this[0] will be created
+  + resource "aws_cloudwatch_log_group" "this" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + name              = "/aws/ecs/sec-challenge"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 90
+      + skip_destroy      = false
+      + tags_all          = (known after apply)
+    }
+
+  # module.ecs.module.cluster.aws_ecs_cluster.this[0] will be created
+  + resource "aws_ecs_cluster" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "sec-challenge"
+      + tags_all = (known after apply)
+
+      + configuration {
+          + execute_command_configuration {
+              + logging = "DEFAULT"
+            }
+        }
+
+      + setting {
+          + name  = "containerInsights"
+          + value = "enabled"
+        }
+    }
+
+  # module.ecs.module.cluster.aws_ecs_cluster_capacity_providers.this[0] will be created
+  + resource "aws_ecs_cluster_capacity_providers" "this" {
+      + capacity_providers = [
+          + "FARGATE_SPOT",
+        ]
+      + cluster_name       = "sec-challenge"
+      + id                 = (known after apply)
+
+      + default_capacity_provider_strategy {
+          + base              = 0
+          + capacity_provider = "FARGATE_SPOT"
+          + weight            = 100
+        }
+    }
+
+  # module.ecs.module.service["primary_service"].data.aws_ecs_task_definition.this[0] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "aws_ecs_task_definition" "this" {
+      + arn                  = (known after apply)
+      + arn_without_revision = (known after apply)
+      + execution_role_arn   = (known after apply)
+      + family               = (known after apply)
+      + id                   = (known after apply)
+      + network_mode         = (known after apply)
+      + revision             = (known after apply)
+      + status               = (known after apply)
+      + task_definition      = "primary_service"
+      + task_role_arn        = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_appautoscaling_policy.this["cpu"] will be created
+  + resource "aws_appautoscaling_policy" "this" {
+      + alarm_arns         = (known after apply)
+      + arn                = (known after apply)
+      + id                 = (known after apply)
+      + name               = "cpu"
+      + policy_type        = "TargetTrackingScaling"
+      + resource_id        = (known after apply)
+      + scalable_dimension = "ecs:service:DesiredCount"
+      + service_namespace  = "ecs"
+
+      + target_tracking_scaling_policy_configuration {
+          + disable_scale_in   = false
+          + scale_in_cooldown  = 300
+          + scale_out_cooldown = 60
+          + target_value       = 75
+
+          + predefined_metric_specification {
+              + predefined_metric_type = "ECSServiceAverageCPUUtilization"
+            }
+        }
+    }
+
+  # module.ecs.module.service["primary_service"].aws_appautoscaling_policy.this["memory"] will be created
+  + resource "aws_appautoscaling_policy" "this" {
+      + alarm_arns         = (known after apply)
+      + arn                = (known after apply)
+      + id                 = (known after apply)
+      + name               = "memory"
+      + policy_type        = "TargetTrackingScaling"
+      + resource_id        = (known after apply)
+      + scalable_dimension = "ecs:service:DesiredCount"
+      + service_namespace  = "ecs"
+
+      + target_tracking_scaling_policy_configuration {
+          + disable_scale_in   = false
+          + scale_in_cooldown  = 300
+          + scale_out_cooldown = 60
+          + target_value       = 75
+
+          + predefined_metric_specification {
+              + predefined_metric_type = "ECSServiceAverageMemoryUtilization"
+            }
+        }
+    }
+
+  # module.ecs.module.service["primary_service"].aws_appautoscaling_target.this[0] will be created
+  + resource "aws_appautoscaling_target" "this" {
+      + arn                = (known after apply)
+      + id                 = (known after apply)
+      + max_capacity       = 10
+      + min_capacity       = 1
+      + resource_id        = (known after apply)
+      + role_arn           = (known after apply)
+      + scalable_dimension = "ecs:service:DesiredCount"
+      + service_namespace  = "ecs"
+      + tags_all           = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_ecs_service.this[0] will be created
+  + resource "aws_ecs_service" "this" {
+      + cluster                            = (known after apply)
+      + deployment_maximum_percent         = 200
+      + deployment_minimum_healthy_percent = 66
+      + desired_count                      = 1
+      + enable_ecs_managed_tags            = true
+      + enable_execute_command             = true
+      + force_new_deployment               = true
+      + iam_role                           = (known after apply)
+      + id                                 = (known after apply)
+      + launch_type                        = "FARGATE"
+      + name                               = "primary_service"
+      + platform_version                   = (known after apply)
+      + scheduling_strategy                = "REPLICA"
+      + tags_all                           = (known after apply)
+      + task_definition                    = (known after apply)
+      + triggers                           = (known after apply)
+      + wait_for_steady_state              = false
+
+      + load_balancer {
+          + container_name   = "gitea"
+          + container_port   = 3000
+          + target_group_arn = (known after apply)
+        }
+
+      + network_configuration {
+          + assign_public_ip = true
+          + security_groups  = (known after apply)
+          + subnets          = [
+              + "subnet-abc123",
+              + "subnet-ou812",
+            ]
+        }
+
+      + timeouts {}
+    }
+
+  # module.ecs.module.service["primary_service"].aws_ecs_task_definition.this[0] will be created
+  + resource "aws_ecs_task_definition" "this" {
+      + arn                      = (known after apply)
+      + arn_without_revision     = (known after apply)
+      + container_definitions    = jsonencode(
+            [
+              + {
+                  + environment            = [
+                      + {
+                          + name  = "GITEA__database__DB_TYPE"
+                          + value = "mysql"
+                        },
+                      + {
+                          + name  = "GITEA__database__HOST"
+                          + value = "gitea.cxzynmcy4x5v.us-east-1.rds.amazonaws.com:3306"
+                        },
+                      + {
+                          + name  = "GITEA__database__NAME"
+                          + value = "gitea"
+                        },
+                      + {
+                          + name  = "GITEA__database__PASSWD"
+                          + value = "DL2ryuEAjVjME3li"
+                        },
+                      + {
+                          + name  = "GITEA__database__USER"
+                          + value = "gitea"
+                        },
+                      + {
+                          + name  = "GITEA__server__DOMAIN"
+                          + value = "awesome-app.super-cool-domain.com"
+                        },
+                      + {
+                          + name  = "GITEA__server__HTTP_PORT"
+                          + value = "3000"
+                        },
+                      + {
+                          + name  = "GITEA__server__PROTOCOL"
+                          + value = "http"
+                        },
+                      + {
+                          + name  = "GITEA__server__ROOT_URL"
+                          + value = "https://awesome-app.super-cool-domain.com/"
+                        },
+                    ]
+                  + essential              = true
+                  + healthCheck            = {
+                      + command  = [
+                          + "CMD-SHELL",
+                          + "curl -fSs 127.0.0.1:3000/api/healthz || exit 1",
+                        ]
+                      + interval = 30
+                      + retries  = 3
+                      + timeout  = 5
+                    }
+                  + image                  = "gitea/gitea:1.19.3"
+                  + interactive            = false
+                  + logConfiguration       = {
+                      + logDriver = "awslogs"
+                      + options   = {
+                          + awslogs-group         = "/aws/ecs/primary_service/gitea"
+                          + awslogs-region        = "us-east-1"
+                          + awslogs-stream-prefix = "ecs"
+                        }
+                    }
+                  + mountPoints            = [
+                      + {
+                          + containerPath = "/data"
+                          + readOnly      = false
+                          + sourceVolume  = "data"
+                        },
+                    ]
+                  + name                   = "gitea"
+                  + portMappings           = [
+                      + {
+                          + containerPort = 3000
+                          + hostPort      = 3000
+                        },
+                    ]
+                  + privileged             = false
+                  + pseudoTerminal         = false
+                  + readonlyRootFilesystem = false
+                  + startTimeout           = 30
+                  + stopTimeout            = 120
+                },
+            ]
+        )
+      + cpu                      = "256"
+      + execution_role_arn       = (known after apply)
+      + family                   = "primary_service"
+      + id                       = (known after apply)
+      + memory                   = "512"
+      + network_mode             = "awsvpc"
+      + requires_compatibilities = [
+          + "FARGATE",
+        ]
+      + revision                 = (known after apply)
+      + skip_destroy             = false
+      + tags_all                 = (known after apply)
+      + task_role_arn            = (known after apply)
+
+      + runtime_platform {
+          + cpu_architecture        = "X86_64"
+          + operating_system_family = "LINUX"
+        }
+    }
+
+  # module.ecs.module.service["primary_service"].aws_iam_policy.task_exec[0] will be created
+  + resource "aws_iam_policy" "task_exec" {
+      + arn         = (known after apply)
+      + description = "Task execution role IAM policy"
+      + id          = (known after apply)
+      + name        = (known after apply)
+      + name_prefix = "primary_service-"
+      + path        = "/"
+      + policy      = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action   = [
+                          + "logs:PutLogEvents",
+                          + "logs:CreateLogStream",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "Logs"
+                    },
+                  + {
+                      + Action   = [
+                          + "ecr:GetDownloadUrlForLayer",
+                          + "ecr:GetAuthorizationToken",
+                          + "ecr:BatchGetImage",
+                          + "ecr:BatchCheckLayerAvailability",
+                        ]
+                      + Effect   = "Allow"
+                      + Resource = "*"
+                      + Sid      = "ECR"
+                    },
+                  + {
+                      + Action   = "ssm:GetParameters"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:ssm:*:*:parameter/*"
+                      + Sid      = "GetSSMParams"
+                    },
+                  + {
+                      + Action   = "secretsmanager:GetSecretValue"
+                      + Effect   = "Allow"
+                      + Resource = "arn:aws:secretsmanager:*:*:secret:*"
+                      + Sid      = "GetSecrets"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + policy_id   = (known after apply)
+      + tags_all    = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_iam_role.task_exec[0] will be created
+  + resource "aws_iam_role" "task_exec" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ecs-tasks.amazonaws.com"
+                        }
+                      + Sid       = "ECSTaskExecutionAssumeRole"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + description           = "Task execution role for primary_service"
+      + force_detach_policies = true
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = (known after apply)
+      + name_prefix           = "primary_service-"
+      + path                  = "/"
+      + tags_all              = (known after apply)
+      + unique_id             = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_iam_role.tasks[0] will be created
+  + resource "aws_iam_role" "tasks" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Condition = {
+                          + ArnLike      = {
+                              + "aws:SourceArn" = "arn:aws:ecs:us-east-1:834293215331:*"
+                            }
+                          + StringEquals = {
+                              + "aws:SourceAccount" = "834293215331"
+                            }
+                        }
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ecs-tasks.amazonaws.com"
+                        }
+                      + Sid       = "ECSTasksAssumeRole"
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = true
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = (known after apply)
+      + name_prefix           = "primary_service-"
+      + path                  = "/"
+      + tags_all              = (known after apply)
+      + unique_id             = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_iam_role_policy_attachment.task_exec[0] will be created
+  + resource "aws_iam_role_policy_attachment" "task_exec" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_iam_role_policy_attachment.tasks["allow_exec_command"] will be created
+  + resource "aws_iam_role_policy_attachment" "tasks" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = (known after apply)
+    }
+
+  # module.ecs.module.service["primary_service"].aws_security_group.this[0] will be created
+  + resource "aws_security_group" "this" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = (known after apply)
+      + name_prefix            = "primary_service-"
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags_all               = (known after apply)
+      + vpc_id                 = "vpc-98765"
+    }
+
+  # module.ecs.module.service["primary_service"].aws_security_group_rule.this["egress_all"] will be created
+  + resource "aws_security_group_rule" "this" {
+      + cidr_blocks              = [
+          + "0.0.0.0/0",
+        ]
+      + from_port                = 0
+      + id                       = (known after apply)
+      + protocol                 = "-1"
+      + security_group_id        = (known after apply)
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 0
+      + type                     = "egress"
+    }
+
+  # module.ecs.module.service["primary_service"].aws_security_group_rule.this["ingress_all"] will be created
+  + resource "aws_security_group_rule" "this" {
+      + cidr_blocks              = [
+          + "0.0.0.0/0",
+        ]
+      + from_port                = 0
+      + id                       = (known after apply)
+      + protocol                 = "-1"
+      + security_group_id        = (known after apply)
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 0
+      + type                     = "ingress"
+    }
+
+  # module.ecs.module.service["primary_service"].module.container_definition["primary_container"].aws_cloudwatch_log_group.this[0] will be created
+  + resource "aws_cloudwatch_log_group" "this" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + name              = "/aws/ecs/primary_service/gitea"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 14
+      + skip_destroy      = false
+      + tags_all          = (known after apply)
+    }
+
+Plan: 30 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
