@@ -1,0 +1,234 @@
+module.db.module.db_instance.data.aws_partition.current: Reading...
+module.db.module.db_instance.data.aws_partition.current: Read complete after 0s [id=aws]
+module.db.module.db_instance.data.aws_iam_policy_document.enhanced_monitoring: Reading...
+module.db.module.db_instance.data.aws_iam_policy_document.enhanced_monitoring: Read complete after 0s [id=76086537]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_db_subnet_group.default will be created
+  + resource "aws_db_subnet_group" "default" {
+      + arn                     = (known after apply)
+      + description             = "Managed by Terraform"
+      + id                      = (known after apply)
+      + name                    = "public"
+      + name_prefix             = (known after apply)
+      + subnet_ids              = [
+          + "subnet-abc123",
+          + "subnet-ou812",
+        ]
+      + supported_network_types = (known after apply)
+      + tags_all                = (known after apply)
+      + vpc_id                  = (known after apply)
+    }
+
+  # aws_security_group.database_security_group will be created
+  + resource "aws_security_group" "database_security_group" {
+      + arn                    = (known after apply)
+      + description            = "Allow database access"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow database access"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow database access"
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+            },
+        ]
+      + name                   = "database_security_group"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags_all               = (known after apply)
+      + vpc_id                 = "vpc-9876"
+    }
+
+  # random_password.db_password will be created
+  + resource "random_password" "db_password" {
+      + bcrypt_hash      = (sensitive value)
+      + id               = (known after apply)
+      + length           = 16
+      + lower            = true
+      + min_lower        = 0
+      + min_numeric      = 0
+      + min_special      = 0
+      + min_upper        = 0
+      + number           = true
+      + numeric          = true
+      + override_special = "_%@"
+      + result           = (sensitive value)
+      + special          = true
+      + upper            = true
+    }
+
+  # module.db.random_password.master_password[0] will be created
+  + resource "random_password" "master_password" {
+      + bcrypt_hash = (sensitive value)
+      + id          = (known after apply)
+      + length      = 16
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (sensitive value)
+      + special     = false
+      + upper       = true
+    }
+
+  # module.db.module.db_instance.aws_db_instance.this[0] will be created
+  + resource "aws_db_instance" "this" {
+      + address                               = (known after apply)
+      + allocated_storage                     = 5
+      + allow_major_version_upgrade           = false
+      + apply_immediately                     = false
+      + arn                                   = (known after apply)
+      + auto_minor_version_upgrade            = true
+      + availability_zone                     = (known after apply)
+      + backup_retention_period               = (known after apply)
+      + backup_window                         = (known after apply)
+      + ca_cert_identifier                    = (known after apply)
+      + character_set_name                    = (known after apply)
+      + copy_tags_to_snapshot                 = false
+      + db_name                               = "gitea"
+      + db_subnet_group_name                  = "public"
+      + delete_automated_backups              = true
+      + deletion_protection                   = false
+      + endpoint                              = (known after apply)
+      + engine                                = "mysql"
+      + engine_version                        = (known after apply)
+      + engine_version_actual                 = (known after apply)
+      + final_snapshot_identifier             = (known after apply)
+      + hosted_zone_id                        = (known after apply)
+      + iam_database_authentication_enabled   = false
+      + id                                    = (known after apply)
+      + identifier                            = "gitea"
+      + identifier_prefix                     = (known after apply)
+      + instance_class                        = "db.t2.micro"
+      + iops                                  = (known after apply)
+      + kms_key_id                            = (known after apply)
+      + latest_restorable_time                = (known after apply)
+      + license_model                         = (known after apply)
+      + listener_endpoint                     = (known after apply)
+      + maintenance_window                    = (known after apply)
+      + master_user_secret                    = (known after apply)
+      + master_user_secret_kms_key_id         = (known after apply)
+      + max_allocated_storage                 = 0
+      + monitoring_interval                   = 0
+      + monitoring_role_arn                   = (known after apply)
+      + multi_az                              = false
+      + nchar_character_set_name              = (known after apply)
+      + network_type                          = (known after apply)
+      + option_group_name                     = (known after apply)
+      + parameter_group_name                  = (known after apply)
+      + password                              = (sensitive value)
+      + performance_insights_enabled          = false
+      + performance_insights_kms_key_id       = (known after apply)
+      + performance_insights_retention_period = (known after apply)
+      + port                                  = 3306
+      + publicly_accessible                   = true
+      + replica_mode                          = (known after apply)
+      + replicas                              = (known after apply)
+      + resource_id                           = (known after apply)
+      + skip_final_snapshot                   = false
+      + snapshot_identifier                   = (known after apply)
+      + status                                = (known after apply)
+      + storage_encrypted                     = false
+      + storage_throughput                    = (known after apply)
+      + storage_type                          = (known after apply)
+      + tags_all                              = (known after apply)
+      + timezone                              = (known after apply)
+      + username                              = "gitea"
+      + vpc_security_group_ids                = (known after apply)
+
+      + timeouts {}
+    }
+
+  # module.db.module.db_instance.random_id.snapshot_identifier[0] will be created
+  + resource "random_id" "snapshot_identifier" {
+      + b64_std     = (known after apply)
+      + b64_url     = (known after apply)
+      + byte_length = 4
+      + dec         = (known after apply)
+      + hex         = (known after apply)
+      + id          = (known after apply)
+      + keepers     = {
+          + "id" = "gitea"
+        }
+    }
+
+  # module.db.module.db_option_group.aws_db_option_group.this[0] will be created
+  + resource "aws_db_option_group" "this" {
+      + arn                      = (known after apply)
+      + engine_name              = "mysql"
+      + id                       = (known after apply)
+      + major_engine_version     = "8.0"
+      + name                     = (known after apply)
+      + name_prefix              = "gitea-"
+      + option_group_description = "gitea option group"
+      + tags                     = {
+          + "Name" = "gitea"
+        }
+      + tags_all                 = {
+          + "Name" = "gitea"
+        }
+
+      + timeouts {}
+    }
+
+  # module.db.module.db_parameter_group.aws_db_parameter_group.this[0] will be created
+  + resource "aws_db_parameter_group" "this" {
+      + arn         = (known after apply)
+      + description = "gitea parameter group"
+      + family      = "mysql8.0"
+      + id          = (known after apply)
+      + name        = (known after apply)
+      + name_prefix = "gitea-"
+      + tags        = {
+          + "Name" = "gitea"
+        }
+      + tags_all    = {
+          + "Name" = "gitea"
+        }
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + db_host     = (known after apply)
+  + db_name     = "gitea"
+  + db_password = (sensitive value)
+  + db_port     = 3306
+  + db_username = (sensitive value)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
